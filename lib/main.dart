@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'chart_screen.dart';
+import 'charts_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blueGrey, useMaterial3: true),
       home: const ChartScreen(),
     );
   }

@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../widgets/spline_area_chart.dart';
 
 class MySpineLineChart extends StatefulWidget {
   const MySpineLineChart({Key? key}) : super(key: key);
@@ -30,20 +31,29 @@ class _MySpineLineChartState extends State<MySpineLineChart> {
         backgroundColor: const Color.fromRGBO(0, 150, 136, 1),
         title: const Text('SpineLine Chart'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(16),
-        child: SfCartesianChart(
-          legend: Legend(isVisible: true),
-          primaryXAxis: CategoryAxis(),
-          series: <ChartSeries>[
-            SplineSeries<SalesData, String>(
-              dataSource: _chartData,
-              xValueMapper: (SalesData sales, _) => sales.month,
-              yValueMapper: (SalesData sales, _) => sales.sales,
-              splineType: SplineType.cardinal,
-            )
-          ],
-        ),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: SfCartesianChart(
+              legend: Legend(isVisible: true),
+              primaryXAxis: CategoryAxis(),
+              series: <ChartSeries>[
+                SplineSeries<SalesData, String>(
+                  dataSource: _chartData,
+                  xValueMapper: (SalesData sales, _) => sales.month,
+                  yValueMapper: (SalesData sales, _) => sales.sales,
+                  splineType: SplineType.cardinal,
+                )
+              ],
+            ),
+          ),
+          const Divider(
+            height: 10,
+            thickness: 2,
+          ),
+          const SplineAreaChart(),
+        ],
       ),
     );
   }

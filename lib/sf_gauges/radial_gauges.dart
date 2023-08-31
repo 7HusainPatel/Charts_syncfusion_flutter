@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class MyRadialGauges extends StatefulWidget {
-  MyRadialGauges({Key? key}) : super(key: key);
+  const MyRadialGauges({Key? key}) : super(key: key);
 
   @override
   State<MyRadialGauges> createState() => _MyRadialGaugesState();
@@ -14,7 +14,7 @@ class _MyRadialGaugesState extends State<MyRadialGauges> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('RadialGuages'),
+          title: const Text('RadialGauges'),
         ),
         body: Center(
             child: SfRadialGauge(

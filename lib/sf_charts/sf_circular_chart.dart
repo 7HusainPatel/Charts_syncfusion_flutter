@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../widgets/radial_chart.dart';
 
 class MyCircularChart extends StatefulWidget {
   const MyCircularChart({Key? key}) : super(key: key);
@@ -27,17 +28,26 @@ class _MyCircularChartState extends State<MyCircularChart> {
           backgroundColor: const Color.fromARGB(255, 102, 126, 175),
           title: const Text('Cartesian Chart'),
         ),
-        body: SfCircularChart(
-          title: ChartTitle(text: 'Continent wise GDP - 2021'),
-          tooltipBehavior: _tooltipBehavior,
-          legend: Legend(
-              isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
-          series: <CircularSeries>[
-            PieSeries<GDPData, String>(
-                dataSource: _chartData,
-                xValueMapper: (GDPData data, _) => data.continent,
-                yValueMapper: (GDPData data, _) => data.gdp,
-                dataLabelSettings: const DataLabelSettings(isVisible: true))
+        body: Column(
+          children: [
+            SfCircularChart(
+              title: ChartTitle(text: 'Continent wise GDP - 2021'),
+              tooltipBehavior: _tooltipBehavior,
+              legend: const Legend(
+                  isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
+              series: <CircularSeries>[
+                PieSeries<GDPData, String>(
+                    dataSource: _chartData,
+                    xValueMapper: (GDPData data, _) => data.continent,
+                    yValueMapper: (GDPData data, _) => data.gdp,
+                    dataLabelSettings: const DataLabelSettings(isVisible: true))
+              ],
+            ),
+            const Divider(
+              height: 10,
+              thickness: 2,
+            ),
+            RadialChart(),
           ],
         ),
       ),
@@ -46,7 +56,7 @@ class _MyCircularChartState extends State<MyCircularChart> {
 
   List<GDPData> getChartData() {
     final List<GDPData> chartData = [
-      GDPData('Oceanina', 1600),
+      GDPData('Oceania', 1600),
       GDPData('Africa', 2490),
       GDPData('S America', 2900),
       GDPData('Europe', 23050),
